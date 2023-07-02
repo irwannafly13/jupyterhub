@@ -1,0 +1,13 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: alicloud-disk-immediate
+provisioner: diskplugin.csi.alibabacloud.com
+parameters:
+  type: cloud_essd,cloud_ssd,cloud_efficiency # The system attempts to create a disk of the specified types in sequence. The actual types of disks that are created depend on the instance types of the ECS instances to which the disks are mounted and the disk types supported by the zones where the ECS instances are deployed.
+  regionId: ap-southeast-5
+  zoneId: ap-southeast-5a,ap-southeast-5b
+  encrypted: "false"
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
